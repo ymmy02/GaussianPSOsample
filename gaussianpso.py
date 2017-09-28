@@ -33,9 +33,8 @@ def advance(particle):
   nextvel = np.zeros(DIM)
 
   nextpos = particle.pos + particle.vel
-  nextvel = W*particle.vel
-  nextvel = nextvel + rho1 * np.random.normal(particle.pbest - particle.pos)
-  nextvel = nextvel + rho2 * np.random.normal(particle.lbest - particle.pos)
+  nextvel = abs(np.random.normal()) * (particle.pbest - particle.pos)
+  nextvel += abs(np.random.normal()) * (particle.lbest - particle.pos)
 
   return nextpos, nextvel
   
